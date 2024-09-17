@@ -1,0 +1,3 @@
+/home/denis/Programs/SAE2D/br/br_long/without_interaction/make_2e_wavefunc_from_1e
+/home/denis/Programs/SAE2D/br/br_long/without_interaction/inner_electron
+/home/denis/Programs/SAE2D/br/br_long/without_interaction/external_electron
