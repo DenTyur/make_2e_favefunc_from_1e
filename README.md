@@ -121,14 +121,51 @@ python 3 plot_psi_x_time_slises.py
 ```
 После этого появится каталог `RSSFM1D/src/imgs/time_evol/psi_x` в графиками временных врезов волновой фукции
 
-<!-- ### Шаг 1 -->
-<!---->
-<!-- Создаем файл `dir_paths.txt` в каталоге `make_2e_wavefunc_from_1e/python`. -->
-<!-- В этот файл в три строки записываем абсолютный путь к каталогам: -->
-<!--  - `make_2e_wavefunc_from_1e` -->
-<!--  - `inner_electron` -->
-<!--  - `external_electron` -->
+## Шаг 3 
+Делаем все то же самое, что и на шаге 2, только для внутреннего электрона.
+В каталоге `inner_electron`
 
+## Шаг 4
+
+Создаем на основе одноэлектронных функций внешнего и внетреннего электронов
+двухэлектронную функцию.
+
+Переходим в каталог `without_interaction/make_2e_wavefunc_from_1e`
+
+Создаем файл `dir_paths.txt` в каталоге `make_2e_wavefunc_from_1e/python`.
+В этот файл в три строки записываем абсолютный путь к каталогам:
+ - `make_2e_wavefunc_from_1e`
+ - `inner_electron`
+ - `external_electron`
+
+ Запускаем из каталога `without_interaction/make_2e_wavefunc_from_1e/python`:
+```bash
+python3 make_2e_wavefunc_from_1e.py
+```
+
+
+После этого появятся:
+- `/src/arrays_saved/time_evol/t.npy` - массив временной сетки
+- `/src/arrays_saved/time_evol/psi_x` - каталог с массивами временных срезов волновой функции
+Эти срезы согласованы с массивом временной сетки
+
+Можно построить графики временных срезов волновой функции, запустив из `src/python`
+
+```bash
+python3 plot_psi_x_time_slises.py
+```
+После этого появится каталог `/src/imgs/time_evol/psi_x` в графиками временных врезов волновой фукции
+
+Чтобы вычислить вероятности ионизации через разные площадки, запускаем 
+`/src/python/ionization_probabilities.py`
+
+После этого появится каталог `/src/arrays_saved/ionization_probabilities` 
+В этом каталоге появятся массивы:
+- `ionization_probabilities.npy` - временная зависимость вероятностей ионизации через разные площадки
+- `surface_indexes.npy` - массив индексов этих площадок
+
+Также появится каталог `/src/imgs/ionization_probabilities`, в котором появятся графики 
+временной зависимости вероятностей ионизации через разные площадки `ionization_probabilities.png`
 
 
 

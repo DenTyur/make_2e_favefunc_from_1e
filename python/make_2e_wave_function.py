@@ -23,7 +23,8 @@ psi_inner_t_dir_path = (
 psi_external_t_dir_path = (
     external_electron_dir_path + "/RSSFM1D/src/arrays_saved/time_evol/psi_x"
 )
-t_inner = np.load(inner_electron_dir_path + "/RSSFM1D/src/arrays_saved/time_evol/t.npy")
+t_inner = np.load(inner_electron_dir_path +
+                  "/RSSFM1D/src/arrays_saved/time_evol/t.npy")
 t_external = np.load(
     external_electron_dir_path + "/RSSFM1D/src/arrays_saved/time_evol/t.npy"
 )
@@ -64,7 +65,8 @@ def time_cycle(it1, it2):
         """
         psi_x_t_inner = np.load(psi_inner_t_dir_path + f"/psi_t_{i}.npy")
         psi_x_t_external = np.load(psi_external_t_dir_path + f"/psi_t_{i}.npy")
-        psi_x1x2 = combine_x(psi_x_t_inner, psi_x_t_external, len(psi_x_t_inner))
+        psi_x1x2 = combine_x(
+            psi_x_t_inner, psi_x_t_external, len(psi_x_t_inner))
         np.save(
             basedir + f"/arrays_saved/time_evol/psi_x/psi_t_{i}.npy",
             psi_x1x2,
@@ -84,8 +86,8 @@ def processesed(tsteps):
 
     for proc in range(cores):
         it2 = it1 + step
-        if it2 >= Nt:
-            it2 = Nt - 1
+        if it2 > Nt:
+            it2 = Nt
         p = mp.Process(target=time_cycle, args=(it1, it2))
         processes.append(p)
         p.start()
